@@ -4,7 +4,7 @@ Small Serial Monitor written in C++ with Win32 API.
 
 ## How to use
 ```bash
-SerialMonitor.exe -b <baudrate> -c <comport>
+SerialMonitor -b <baudrate> -c <comport>
 ```
 
 ## Arguments
