@@ -13,6 +13,9 @@ SerialMonitor::SerialMonitor(const Configuration &config) : config(config)
 
 }
 
+SerialMonitor::SerialMonitor() = default;
+
+
 uint8_t SerialMonitor::Create()
 {
     if(this->config.getComPort() == "")
@@ -21,7 +24,7 @@ uint8_t SerialMonitor::Create()
         return 1;
     }
 #if _WIN32
-\
+
     std::string comPort = "\\\\.\\" + this->config.getComPort();
     this->port = CreateFile(comPort.c_str(),
                             GENERIC_READ, 0, NULL,
@@ -59,9 +62,7 @@ uint8_t SerialMonitor::Create()
 
 void SerialMonitor::Read()
 {
-#if _WIN32
     unsigned long bufferRecv;
-#endif
     bool status = false;
     char recvChar;
     do
@@ -82,4 +83,32 @@ void SerialMonitor::Close()
 {
     CloseHandle(this->port);
     exit(1);
+}
+
+
+void SerialMonitor::ListComPorts()
+{
+    const uint8_t maxComNum = 255;
+    std::string prefix = "\\\\.\\COM";
+    std::string port = "";
+    HANDLE handle;
+    for(uint16_t i = 1; i < maxComNum; i++)
+    {
+
+        port = prefix + std::to_string(i);
+        CreateFileA();
+        handle = CreateFile(port.c_str(),
+                            GENERIC_READ, 0, NULL,
+                            OPEN_EXISTING, 0, NULL);
+        if(handle != INVALID_HANDLE_VALUE)
+        {
+            std::cout << "Found port: COM" << i << std::endl;
+        }
+        CloseHandle(handle);
+    }
+}
+
+void SerialMonitor::AddConfiguration(const Configuration &config)
+{
+    this->config = config;
 }

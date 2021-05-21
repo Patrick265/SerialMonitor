@@ -14,3 +14,4 @@ Supported arguments
 | ----------- | ----------- |
 | -b      | Baudrate       |
 | -c   | Com port        |
+| -L   | Lists all ports        |

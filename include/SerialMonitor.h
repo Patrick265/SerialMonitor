@@ -30,9 +30,12 @@ class SerialMonitor
 
     public:
         SerialMonitor(const Configuration &config);
+        SerialMonitor();
         uint8_t Create();
         void Read();
         void Close();
+        void ListComPorts();
+        void AddConfiguration(const Configuration &config);
 };
 
 

@@ -31,6 +31,7 @@ void ArgumentHandler::CreateConfiguration(Configuration &config)
     {
         prefix = std::get<0>(this->arguments[i])[1];
         value = std::get<1>(this->arguments[i]);
+
         switch(prefix)
         {
             default:
