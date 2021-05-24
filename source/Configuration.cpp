@@ -70,4 +70,14 @@ void Configuration::setComPort(const std::string &comPort)
     Configuration::comPort = comPort;
 }
 
+void Configuration::setParity(std::string parity)
+{
+    // TODO DANGEROUS!!!!!!
+    this->parity = static_cast<Parity_e>(std::stoul(parity));
+}
 
+void Configuration::setStopBits(std::string value)
+{
+    // TODO DANGEROUS!!!!!!
+    this->stopBits = static_cast<StopBits_e>(std::stoul(value));
+}

@@ -46,6 +46,14 @@ void ArgumentHandler::CreateConfiguration(Configuration &config)
             case 'c':
                 config.setComPort(value);
                 break;
+            // Parity
+            case 'p':
+                config.setParity(value);
+                break;
+            case 'd':
+                config.setDataBits(static_cast<uint32_t>(std::stoul(value)));
+            case 's':
+                config.setStopBits(value);
         }
     }
 }
@@ -54,7 +62,6 @@ void ArgumentHandler::CreateDefaultConfig(Configuration &config)
 {
 
 }
-
 
 
 

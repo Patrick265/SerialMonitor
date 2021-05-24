@@ -11,17 +11,16 @@
 typedef enum
 {
     PNone = 0U,
-    Podd,
-    PEven,
-    PMark,
-    PSpace,
+    Podd = 1,
+    PEven = 2,
+    PMark = 3,
+    PSpace = 4,
 } Parity_e;
 
 typedef enum
 {
     SB_None,
     SB_One,
-    SB_Two,
     SB_OnePointFive,
 } StopBits_e;
 
@@ -43,10 +42,12 @@ class Configuration
         StopBits_e getStopBits() const;
 
         void setStopBits(StopBits_e stopBits);
+        void setStopBits(std::string value);
 
         Parity_e getParity() const;
 
         void setParity(Parity_e parity);
+        void setParity(std::string parity);
 
         uint32_t getBaudRate() const;
 

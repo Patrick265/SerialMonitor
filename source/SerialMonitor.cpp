@@ -96,7 +96,6 @@ void SerialMonitor::ListComPorts()
     {
 
         port = prefix + std::to_string(i);
-        CreateFileA();
         handle = CreateFile(port.c_str(),
                             GENERIC_READ, 0, NULL,
                             OPEN_EXISTING, 0, NULL);
